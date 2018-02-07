@@ -25,11 +25,9 @@ namespace Main.Cotrollers
         public MainController()
         {
             connect = new RelayCommand((p) => OnConnectClick());
-            //conString = "Server=192.168.1.82;Uid = root ; Pwd = imd12thgod ;Port=3306";
-            //dbConnector = new DbConnector(conString);
+           
             dbController = new DatabaseController();
-            //connectionController = new ConnectionController();
-            //LoadSamples();
+
             OnConnectClick();
         }
 

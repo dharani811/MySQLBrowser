@@ -1,0 +1,36 @@
+﻿<UserControl x:Class="Main.Views.ConnectionControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Main.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <TextBox IsReadOnly="True" Grid.Column="0" Grid.Row="0" FontSize="20" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" TextAlignment="Center" >Server-Address</TextBox>
+        <TextBox IsReadOnly="True" Grid.Column="0" Grid.Row="1" FontSize="20" TextAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" >UserName</TextBox>
+        <TextBox IsReadOnly="True" Grid.Column="0" Grid.Row="2" FontSize="20" TextAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">Password</TextBox>
+        <TextBox IsReadOnly="True" Grid.Column="0" Grid.Row="3"  FontSize="20" TextAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">Port</TextBox>
+        <Button Grid.Column="0" Grid.Row="4" Name="cancelBtn" FontSize="20" Command="{Binding ConnectionController.CancelCommand}">
+            <TextBlock>Cancel</TextBlock>
+        </Button>
+        <TextBox Grid.Column="1" FontSize="20" Grid.Row="0" Name="serverIpTxt" TextAlignment="Center" Text="{Binding ConnectionController.ServerName}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"></TextBox>
+        <TextBox Grid.Column="1" FontSize="20" Grid.Row="1" Name="userNameTxt"  TextAlignment="Center" Text="{Binding ConnectionController.UserName}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"></TextBox>
+        <TextBox Grid.Column="1" FontSize="20" Grid.Row="2" Name="pwdTxt"  TextAlignment="Center" Text="{Binding ConnectionController.Password}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"></TextBox>
+        <TextBox Grid.Column="1" FontSize="20" Grid.Row="3" Name="portTxt"  TextAlignment="Center" Text="{Binding ConnectionController.Port}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"></TextBox>
+        <Button Grid.Column="1" FontSize="20" Grid.Row="4" Name="connectBtn" Command="{Binding ConnectionController.ApplyCommand}">
+            <TextBlock>Connect</TextBlock>
+        </Button>
+    </Grid>
+</UserControl>

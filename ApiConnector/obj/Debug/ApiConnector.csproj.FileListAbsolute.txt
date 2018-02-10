@@ -1,0 +1,9 @@
+C:\Users\dk\Documents\GitHub\MySQLBrowser\ApiConnector\bin\Debug\ApiConnector.dll.config
+C:\Users\dk\Documents\GitHub\MySQLBrowser\ApiConnector\bin\Debug\ApiConnector.dll
+C:\Users\dk\Documents\GitHub\MySQLBrowser\ApiConnector\bin\Debug\ApiConnector.pdb
+C:\Users\dk\Documents\GitHub\MySQLBrowser\ApiConnector\bin\Debug\MySql.Data.dll
+C:\Users\dk\Documents\GitHub\MySQLBrowser\ApiConnector\bin\Debug\MySql.Data.xml
+C:\Users\dk\Documents\GitHub\MySQLBrowser\ApiConnector\obj\Debug\ApiConnector.csproj.CoreCompileInputs.cache
+C:\Users\dk\Documents\GitHub\MySQLBrowser\ApiConnector\obj\Debug\ApiConnector.dll
+C:\Users\dk\Documents\GitHub\MySQLBrowser\ApiConnector\obj\Debug\ApiConnector.pdb
+C:\Users\dk\Documents\GitHub\MySQLBrowser\ApiConnector\obj\Debug\ApiConnector.csprojResolveAssemblyReference.cache

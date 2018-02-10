@@ -19,7 +19,7 @@ namespace Main.Cotrollers
         DatabaseController dbController;
         ConnectionController connectionController;
         private ICommand connect;
-
+        private string currentStatus;
 
         public static MainController This = new MainController();
         public MainController()
@@ -29,6 +29,7 @@ namespace Main.Cotrollers
             dbController = new DatabaseController();
 
             OnConnectClick();
+            currentStatus = "Idle";
         }
 
         public void MainController_ConnectionChanged(object sender, EventArgs e)
@@ -61,7 +62,15 @@ namespace Main.Cotrollers
         public DatabaseController DbController { get => dbController; set => dbController = value; }
         public ConnectionController ConnectionController { get => connectionController; set => connectionController = value; }
         public ICommand Connect { get => connect; set => connect = value; }
-
+        public String CurrentStatus
+        {
+            get => currentStatus;
+            set
+            {
+                currentStatus = value;
+                NotifyPropertyChanged("CurrentStatus");
+            }
+        }
         public void LoadSamples()
         {
           DbController.PopulateNodes(dbConnector.GetDatabaseList(),false);

@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiConnector", "ApiConnecto
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Interpreters", "Interpreters\Interpreters.csproj", "{A4BA5C77-4398-45B9-B542-FB8E2B485253}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Contracts", "Contracts\Contracts.csproj", "{8641F60B-B331-4902-A083-249DD26FDCEC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{A4BA5C77-4398-45B9-B542-FB8E2B485253}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A4BA5C77-4398-45B9-B542-FB8E2B485253}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A4BA5C77-4398-45B9-B542-FB8E2B485253}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8641F60B-B331-4902-A083-249DD26FDCEC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8641F60B-B331-4902-A083-249DD26FDCEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8641F60B-B331-4902-A083-249DD26FDCEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8641F60B-B331-4902-A083-249DD26FDCEC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

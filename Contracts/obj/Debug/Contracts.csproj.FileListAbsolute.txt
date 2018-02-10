@@ -1,0 +1,6 @@
+C:\Users\dk\Documents\GitHub\MySQLBrowser\Contracts\bin\Debug\Contracts.dll
+C:\Users\dk\Documents\GitHub\MySQLBrowser\Contracts\bin\Debug\Contracts.pdb
+C:\Users\dk\Documents\GitHub\MySQLBrowser\Contracts\obj\Debug\Contracts.csproj.CoreCompileInputs.cache
+C:\Users\dk\Documents\GitHub\MySQLBrowser\Contracts\obj\Debug\Contracts.dll
+C:\Users\dk\Documents\GitHub\MySQLBrowser\Contracts\obj\Debug\Contracts.pdb
+C:\Users\dk\Documents\GitHub\MySQLBrowser\Contracts\obj\Debug\Contracts.csprojResolveAssemblyReference.cache

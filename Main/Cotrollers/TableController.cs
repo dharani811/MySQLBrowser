@@ -29,7 +29,11 @@ namespace Main.Cotrollers
         {
             base.MouseDoubleClick(node);
             gridController.ResetView();
-            gridController.PopulateView(node);
+            WorkUnit = new Utils.UnitOfWork(() => gridController.PopulateView(node),true);
+            WorkUnit.StatusChanged += WorkUnit_StatusChanged;
+            WorkUnit.DoWork();
         }
+
+        
     }
 }

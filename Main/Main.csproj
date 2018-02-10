@@ -66,6 +66,7 @@
     <Compile Include="Cotrollers\RelayCommand.cs" />
     <Compile Include="Cotrollers\TableController.cs" />
     <Compile Include="Cotrollers\UINotify.cs" />
+    <Compile Include="Utils\UnitOfWork.cs" />
     <Compile Include="Views\ConnectionControl.xaml.cs">
       <DependentUpon>ConnectionControl.xaml</DependentUpon>
     </Compile>
@@ -130,6 +131,10 @@
     <ProjectReference Include="..\ApiConnector\ApiConnector.csproj">
       <Project>{5d7a72ba-24c5-4a95-bf65-c1ed7d663c47}</Project>
       <Name>ApiConnector</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Contracts\Contracts.csproj">
+      <Project>{8641F60B-B331-4902-A083-249DD26FDCEC}</Project>
+      <Name>Contracts</Name>
     </ProjectReference>
     <ProjectReference Include="..\Interpreters\Interpreters.csproj">
       <Project>{A4BA5C77-4398-45B9-B542-FB8E2B485253}</Project>

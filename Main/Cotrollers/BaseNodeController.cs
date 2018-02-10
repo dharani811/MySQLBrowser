@@ -27,25 +27,32 @@ namespace Main.Cotrollers
         public void PopulateNodes(List<LambdaNode> nodes, bool append)
         {
             if (!append)
-                lambdaNodes.Clear();
-            foreach (var item in nodes)
+                CurrentDisptacher.Invoke(()=> lambdaNodes.Clear());
+            CurrentDisptacher.Invoke(() =>
             {
-                lambdaNodes.Add(item);
-                AssignEvents(item);
-            }
+                foreach (var item in nodes)
+                {
+                    CurrentDisptacher.Invoke(() => lambdaNodes.Add(item));
+                    AssignEvents(item);
+                }
+            });
         }
         public void PopulateNodes(IEnumerable<string> nodes, bool append)
         {
             if (!append)
-                lambdaNodes.Clear();
-            foreach (var item in nodes)
+                CurrentDisptacher.Invoke(() => lambdaNodes.Clear());
+            CurrentDisptacher.Invoke(() =>
             {
-                var node = new LambdaNode(item);
-                lambdaNodes.Add(node);
-                AssignEvents(node);
 
+                foreach (var item in nodes)
+                {
+                    var node = new LambdaNode(item);
+                    lambdaNodes.Add(node);
+                    AssignEvents(node);
+
+                }
             }
-
+            );
         }
 
         private void AssignEvents(LambdaNode node)

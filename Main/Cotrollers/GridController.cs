@@ -1,5 +1,6 @@
 ﻿using ApiConnector;
 using Interpreters;
+using Main.Utils;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -30,7 +31,9 @@ namespace Main.Cotrollers
 
         public void PopulateView(LambdaNode tableNode)
         {
-            DataTable = DbConnector.ExecuteQuery("select * from " + tableNode.NodeName);
+            WorkUnit = new UnitOfWork(()=> DataTable = DbConnector.ExecuteQuery("select * from " + tableNode.NodeName),false);
+            WorkUnit.StatusChanged += WorkUnit_StatusChanged;
+            WorkUnit.DoWork();
 
         }
 

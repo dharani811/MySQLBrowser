@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-E:\Garage Projects\MySQLBrowser\Main\Main\obj\Debug\
+C:\Users\dk\Documents\GitHub\MySQLBrowser\Main\obj\Debug\
 Main
 none
 false
 DEBUG;TRACE
-E:\Garage Projects\MySQLBrowser\Main\Main\App.xaml
+C:\Users\dk\Documents\GitHub\MySQLBrowser\Main\App.xaml
 4-2090912299
 
-21-663892594
-151755796864
+22-1879988271
+16789814566
 MainWindow.xaml;Views\ConnectionControl.xaml;Views\GridControl.xaml;Views\TreeHolder.xaml;
 
 True

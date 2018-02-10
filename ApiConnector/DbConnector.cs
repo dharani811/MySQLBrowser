@@ -12,7 +12,6 @@ namespace ApiConnector
     public  class DbConnector
     {
         private string connectionString;
-        private MySqlConnection connection; 
 
          public DbConnector()
         {
@@ -22,12 +21,18 @@ namespace ApiConnector
         public DbConnector(string connectionString)
         {
             this.connectionString = connectionString;
-            connection = new MySqlConnection(connectionString);
+        }
+
+        private MySqlConnection CreateAndOpenCon()
+        {
+            var connection = new MySqlConnection(connectionString);
+            connection.Open();
+            return connection;
         }
 
         public IEnumerable<string> GetDatabaseList()
         {
-            connection.Open();
+            var connection = CreateAndOpenCon();
             DataTable dt=new DataTable();
             MySqlDataAdapter dataAdapter = new MySqlDataAdapter("show databases", connection);
             dataAdapter.Fill(dt);
@@ -42,7 +47,7 @@ namespace ApiConnector
 
         public DataTable ExecuteQuery(string query)
         {
-            connection.Open();
+            var connection = CreateAndOpenCon();
             DataTable dataTable = new DataTable();
             MySqlDataAdapter adapter = new MySqlDataAdapter(query, connection);
             adapter.Fill(dataTable);
@@ -54,7 +59,7 @@ namespace ApiConnector
 
         public IEnumerable<string> GetTables(string database)
         {
-            connection.Open();
+            var connection = CreateAndOpenCon();
             MySqlCommand command = new MySqlCommand("use "+ database, connection);
             command.ExecuteNonQuery();
             DataTable dt = new DataTable();

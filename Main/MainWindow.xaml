@@ -17,6 +17,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="25"></RowDefinition>
             <RowDefinition></RowDefinition>
+            <RowDefinition Height="25"></RowDefinition>
         </Grid.RowDefinitions>
             <Menu Grid.Row="0">
             <MenuItem Header="Themes" Name="themes"    ></MenuItem>
@@ -36,5 +37,13 @@
             </views:TreeHolder>
 
         </DockPanel>
+        <StatusBar Grid.Row="2" >
+            <DockPanel >
+                <WrapPanel>
+                <TextBlock DockPanel.Dock="Right">Status ====> </TextBlock>
+                <TextBlock Text="{Binding Path=CurrentStatus}"></TextBlock>
+                </WrapPanel>
+            </DockPanel>
+            </StatusBar>
     </Grid>
 </Window>

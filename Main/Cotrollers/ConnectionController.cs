@@ -1,8 +1,10 @@
-﻿using System;
+﻿using ApiConnector;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Timers;
 using System.Windows.Input;
 
 namespace Main.Cotrollers
@@ -15,13 +17,51 @@ namespace Main.Cotrollers
         private string port;
         private ICommand applyCommand;
         private ICommand cancelCommand;
+        private ICommand testCommand;
+        private bool isValidConnection;
+        private string conResultOne;
+        private string conResultTwo;
+        private Timer visibilityTimer;
 
 
         public ConnectionController()
         {
             IsVisible = true;
+            ConnectionUpdate = false;
             applyCommand = new RelayCommand((p) => OnApply());
             cancelCommand = new RelayCommand((p) => OnCancel());
+            testCommand = new RelayCommand((p)=>OnTestCon());
+            conResultOne = "";
+            conResultTwo = "";
+            ConnectionUpdate = false;
+            visibilityTimer = new Timer(3000);
+            visibilityTimer.Elapsed += VisibilityTimer_Elapsed;
+            visibilityTimer.Enabled = false;
+        }
+
+        private void VisibilityTimer_Elapsed(object sender, ElapsedEventArgs e)
+        {
+            visibilityTimer.Enabled = false;
+            ConnectionUpdate = false;
+
+        }
+
+        private void OnTestCon()
+        {
+            var dbController = new DbConnector(ConnectionString);
+            if(dbController.CheckConnection())
+            {
+                ConResultOne = "Connection";
+                ConResultTwo = "Succeeded";
+            }
+            else
+            {
+                ConResultOne = "Connection";
+                ConResultTwo = "Failed";
+
+            }
+            ConnectionUpdate = true;
+            visibilityTimer.Enabled = true;
         }
 
         private void OnCancel()
@@ -31,8 +71,19 @@ namespace Main.Cotrollers
 
         private void OnApply()
         {
-            IsVisible = false;
-            MainController.This.MainController_ConnectionChanged(this, null);
+            var dbController = new DbConnector(ConnectionString);
+            if (!dbController.CheckConnection())
+            {
+                ConResultOne = "Connection";
+                ConResultTwo = "Failed";
+                ConnectionUpdate = true;
+                visibilityTimer.Enabled = true;
+            }
+            else
+            {
+                IsVisible = false;
+                MainController.This.MainController_ConnectionChanged(this, null);
+            }
         }
 
         public string ServerName { get => serverName; set => serverName = value; }
@@ -42,6 +93,11 @@ namespace Main.Cotrollers
         public ICommand ApplyCommand { get => applyCommand; set => applyCommand = value; }
         public ICommand CancelCommand { get => cancelCommand; set => cancelCommand = value; }
         public string ConnectionString { get { return ConnectionStringConcat(); } }
+
+        public ICommand TestCommand { get => testCommand; set => testCommand = value; }
+        public bool ConnectionUpdate { get => isValidConnection; set { isValidConnection = value; NotifyPropertyChanged("ConnectionUpdate"); } }
+        public string ConResultOne { get => conResultOne; set { conResultOne = value; NotifyPropertyChanged("ConResultOne"); } }
+        public string ConResultTwo { get => conResultTwo; set { conResultTwo = value; NotifyPropertyChanged("ConResultTwo"); } }
 
         private string ConnectionStringConcat()
         {

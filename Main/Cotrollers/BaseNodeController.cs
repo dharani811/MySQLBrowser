@@ -57,7 +57,7 @@ namespace Main.Cotrollers
 
         private void AssignEvents(LambdaNode node)
         {
-            node.MouseDoubleClick += Node_MouseDoubleClick;
+            node.MouseUp += Node_MouseDoubleClick;
         }
 
         private void Node_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)

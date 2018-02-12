@@ -24,5 +24,22 @@ namespace Main.Views
         {
             InitializeComponent();
         }
+
+        private void conBox2_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            if(conBox2.Visibility==Visibility.Visible)
+            {
+                conBox1.Visibility = Visibility.Visible;
+                serverIpTxt.Visibility = Visibility.Hidden;
+                serverTextBlock.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                conBox1.Visibility = Visibility.Collapsed;
+                serverIpTxt.Visibility = Visibility.Visible;
+                serverTextBlock.Visibility = Visibility.Visible;
+
+            }
+        }
     }
 }

@@ -30,6 +30,7 @@ namespace Main.Cotrollers
         protected override void MouseDoubleClick(LambdaNode node)
         {
             base.MouseDoubleClick(node);
+            DbConnector.CurrentDb = node.NodeName;
             WorkUnit=new UnitOfWork(() => tableController.PopulateNodes(DbConnector.GetTables(node.NodeName), false),true);
             WorkUnit.StatusChanged += WorkUnit_StatusChanged;
             WorkUnit.DoWork();

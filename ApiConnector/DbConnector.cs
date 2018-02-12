@@ -12,8 +12,11 @@ namespace ApiConnector
     public  class DbConnector
     {
         private string connectionString;
+        private string currentDb;
 
-         public DbConnector()
+        public string CurrentDb { get => currentDb; set => currentDb = value; }
+
+        public DbConnector()
         {
             connectionString = "";
 
@@ -33,7 +36,7 @@ namespace ApiConnector
         public IEnumerable<string> GetDatabaseList()
         {
             var connection = CreateAndOpenCon();
-            DataTable dt=new DataTable();
+            DataTable dt =new DataTable();
             MySqlDataAdapter dataAdapter = new MySqlDataAdapter("show databases", connection);
             dataAdapter.Fill(dt);
             dataAdapter.Dispose();
@@ -48,6 +51,7 @@ namespace ApiConnector
         public DataTable ExecuteQuery(string query)
         {
             var connection = CreateAndOpenCon();
+            SetDatabase(connection);
             DataTable dataTable = new DataTable();
             MySqlDataAdapter adapter = new MySqlDataAdapter(query, connection);
             adapter.Fill(dataTable);
@@ -60,8 +64,7 @@ namespace ApiConnector
         public IEnumerable<string> GetTables(string database)
         {
             var connection = CreateAndOpenCon();
-            MySqlCommand command = new MySqlCommand("use "+ database, connection);
-            command.ExecuteNonQuery();
+            SetDatabase(connection);
             DataTable dt = new DataTable();
             MySqlDataAdapter dataAdapter = new MySqlDataAdapter("show tables", connection);
             dataAdapter.Fill(dt);
@@ -74,6 +77,27 @@ namespace ApiConnector
 
         }
 
-         
+        private  void SetDatabase(MySqlConnection connection)
+        {
+            MySqlCommand command = new MySqlCommand("use " + CurrentDb, connection);
+            command.ExecuteNonQuery();
+        }
+
+        public bool CheckConnection()
+        {
+            var connection = new MySqlConnection(connectionString);
+            try
+            {
+                connection.Open();
+
+            }
+            catch (Exception err)
+            {
+
+              
+            }
+            return connection.State==ConnectionState.Open?true:false ;
+        }
+
     }
 }

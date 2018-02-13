@@ -15,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WPF.Themes;
+using Xceed.Wpf.AvalonDock.Layout;
 
 namespace Main
 {
@@ -46,11 +47,25 @@ namespace Main
             themes.IsSubmenuOpen = false;
         }
 
-       
+        private void dataBrowser_Click(object sender, RoutedEventArgs e)
+        {
+            var dataBrowser = new Views.DataBrowser();
+            LayoutDocument layoutDocument = new LayoutDocument() {Title="DataBrowser_"+docPane.Children.Count+1 };
+            layoutDocument.Content = dataBrowser;
+            var iDoc = MainController.This.CreateNewDataBrowser();
+            dataBrowser.DataContext = iDoc;
+            MainController.This.Document = iDoc;
+            docPane.Children.Add(layoutDocument);
+        }
 
-        
+        private void queryBrowser_Click(object sender, RoutedEventArgs e)
+        {
+            var queryBrowser = new Views.QueryBrowser();
+            LayoutDocument layoutDocument = new LayoutDocument() { Title = "QueryBrowser" + docPane.Children.Count + 1 };
+            layoutDocument.Content = queryBrowser;
+            docPane.Children.Add(layoutDocument);
 
-
+        }
     }
 
     public class BoolToVis : IValueConverter

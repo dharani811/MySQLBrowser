@@ -3,3 +3,4 @@ C:\Users\dk\Documents\GitHub\MySQLBrowser\Interpreters\bin\Debug\Interpreters.pd
 C:\Users\dk\Documents\GitHub\MySQLBrowser\Interpreters\obj\Debug\Interpreters.csproj.CoreCompileInputs.cache
 C:\Users\dk\Documents\GitHub\MySQLBrowser\Interpreters\obj\Debug\Interpreters.dll
 C:\Users\dk\Documents\GitHub\MySQLBrowser\Interpreters\obj\Debug\Interpreters.pdb
+C:\Users\dk\Documents\GitHub\MySQLBrowser\Interpreters\obj\Debug\Interpreters.csprojResolveAssemblyReference.cache

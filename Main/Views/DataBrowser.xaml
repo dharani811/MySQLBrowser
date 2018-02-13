@@ -1,0 +1,34 @@
+﻿<UserControl x:Class="Main.Views.DataBrowser"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+                     xmlns:views="clr-namespace:Main.Views"
+        xmlns:localMain="clr-namespace:Main"
+
+             xmlns:local="clr-namespace:Main.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+
+    <UserControl.Resources>
+        <localMain:BoolToVis x:Key="BoolToVis"/>
+    </UserControl.Resources>
+    <Grid>
+    <Grid.RowDefinitions>
+        <RowDefinition></RowDefinition>
+    </Grid.RowDefinitions>
+   
+    <DockPanel Grid.Row="0">
+        <views:TreeHolder>
+            <DockPanel LastChildFill="True" >
+                <TreeView   ItemsSource="{Binding Path=DbController.Nodes}" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto"  Visibility="{Binding Path=DbController.IsVisible,  Converter={StaticResource BoolToVis}}"></TreeView>
+                <TreeView ItemsSource="{Binding Path=DbController.TableController.Nodes}" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" Visibility="{Binding Path=DbController.TableController.IsVisible,  Converter={StaticResource BoolToVis}}" ></TreeView>
+                <views:GridControl   Visibility="{Binding Path=DbController.TableController.GridController.IsVisible,  Converter={StaticResource BoolToVis}}" HorizontalContentAlignment="Stretch"></views:GridControl>
+                <views:ConnectionControl Grid.Row="1" Visibility="{Binding Path=ConnectionController.IsVisible,  Converter={StaticResource BoolToVis}}"></views:ConnectionControl>
+            </DockPanel>
+        </views:TreeHolder>
+
+    </DockPanel>
+    </Grid>
+
+</UserControl>

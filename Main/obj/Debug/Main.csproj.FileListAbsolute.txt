@@ -14,7 +14,9 @@ C:\Users\dk\Documents\GitHub\MySQLBrowser\Main\bin\Debug\MySql.Data.xml
 C:\Users\dk\Documents\GitHub\MySQLBrowser\Main\obj\Debug\Main.csprojResolveAssemblyReference.cache
 C:\Users\dk\Documents\GitHub\MySQLBrowser\Main\obj\Debug\MainWindow.g.cs
 C:\Users\dk\Documents\GitHub\MySQLBrowser\Main\obj\Debug\Views\ConnectionControl.g.cs
+C:\Users\dk\Documents\GitHub\MySQLBrowser\Main\obj\Debug\Views\DataBrowser.g.cs
 C:\Users\dk\Documents\GitHub\MySQLBrowser\Main\obj\Debug\Views\GridControl.g.cs
+C:\Users\dk\Documents\GitHub\MySQLBrowser\Main\obj\Debug\Views\QueryBrowser.g.cs
 C:\Users\dk\Documents\GitHub\MySQLBrowser\Main\obj\Debug\Views\TreeHolder.g.cs
 C:\Users\dk\Documents\GitHub\MySQLBrowser\Main\obj\Debug\App.g.cs
 C:\Users\dk\Documents\GitHub\MySQLBrowser\Main\obj\Debug\GeneratedInternalTypeHelper.g.cs
@@ -22,7 +24,9 @@ C:\Users\dk\Documents\GitHub\MySQLBrowser\Main\obj\Debug\Main_MarkupCompile.cach
 C:\Users\dk\Documents\GitHub\MySQLBrowser\Main\obj\Debug\Main_MarkupCompile.lref
 C:\Users\dk\Documents\GitHub\MySQLBrowser\Main\obj\Debug\MainWindow.baml
 C:\Users\dk\Documents\GitHub\MySQLBrowser\Main\obj\Debug\Views\ConnectionControl.baml
+C:\Users\dk\Documents\GitHub\MySQLBrowser\Main\obj\Debug\Views\DataBrowser.baml
 C:\Users\dk\Documents\GitHub\MySQLBrowser\Main\obj\Debug\Views\GridControl.baml
+C:\Users\dk\Documents\GitHub\MySQLBrowser\Main\obj\Debug\Views\QueryBrowser.baml
 C:\Users\dk\Documents\GitHub\MySQLBrowser\Main\obj\Debug\Views\TreeHolder.baml
 C:\Users\dk\Documents\GitHub\MySQLBrowser\Main\obj\Debug\Main.g.resources
 C:\Users\dk\Documents\GitHub\MySQLBrowser\Main\obj\Debug\Main.Properties.Resources.resources
@@ -30,3 +34,7 @@ C:\Users\dk\Documents\GitHub\MySQLBrowser\Main\obj\Debug\Main.csproj.GenerateRes
 C:\Users\dk\Documents\GitHub\MySQLBrowser\Main\obj\Debug\Main.csproj.CoreCompileInputs.cache
 C:\Users\dk\Documents\GitHub\MySQLBrowser\Main\obj\Debug\Main.exe
 C:\Users\dk\Documents\GitHub\MySQLBrowser\Main\obj\Debug\Main.pdb
+C:\Users\dk\Documents\GitHub\MySQLBrowser\Main\bin\Debug\DotNetProjects.Wpf.AvalonDock.dll
+C:\Users\dk\Documents\GitHub\MySQLBrowser\Main\bin\Debug\DotNetProjects.Wpf.AvalonDock.pdb
+C:\Users\dk\Documents\GitHub\MySQLBrowser\Main\obj\Debug\Views\QueryBox.g.cs
+C:\Users\dk\Documents\GitHub\MySQLBrowser\Main\obj\Debug\Views\QueryBox.baml

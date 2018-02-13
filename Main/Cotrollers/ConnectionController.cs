@@ -1,4 +1,5 @@
 ﻿using ApiConnector;
+using Contracts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,7 +23,7 @@ namespace Main.Cotrollers
         private string conResultOne;
         private string conResultTwo;
         private Timer visibilityTimer;
-
+        private IConController conControlBase;
 
         public ConnectionController()
         {
@@ -37,6 +38,11 @@ namespace Main.Cotrollers
             visibilityTimer = new Timer(3000);
             visibilityTimer.Elapsed += VisibilityTimer_Elapsed;
             visibilityTimer.Enabled = false;
+        }
+
+        public ConnectionController(IConController conChangeController):this()
+        {
+            this.conControlBase = conChangeController;
         }
 
         private void VisibilityTimer_Elapsed(object sender, ElapsedEventArgs e)
@@ -82,7 +88,7 @@ namespace Main.Cotrollers
             else
             {
                 IsVisible = false;
-                MainController.This.MainController_ConnectionChanged(this, null);
+               conControlBase.ConnectionChanged();
             }
         }
 

@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:views="clr-namespace:Main.Views"
+        xmlns:avalonDock="http://schemas.xceed.com/wpf/xaml/avalondock"
         xmlns:local="clr-namespace:Main"
          xmlns:themes="clr-namespace:WPF.Themes;assembly=WPF.Themes"
             Background="{DynamicResource WindowBackgroundBrush}"
@@ -20,21 +21,31 @@
             <RowDefinition Height="25"></RowDefinition>
         </Grid.RowDefinitions>
             <Menu Grid.Row="0">
-            <MenuItem Header="Themes" Name="themes"    ></MenuItem>
-            <MenuItem Header="Connection" Name="connectionMenu">
-                <MenuItem Header="Connect To Server" Command="{Binding Connect}"></MenuItem>
+            <MenuItem Header="File" >
+                <MenuItem Header="New" Name="newMenu">
+                    <MenuItem Header="DataBrowser" Name="dataBrowser"  Click="dataBrowser_Click"   ></MenuItem>
+                    <MenuItem Header="QueryBrowser" Name="queryBrowser"  Click="queryBrowser_Click"   ></MenuItem>
+
                 </MenuItem>
+
+            </MenuItem>
+            <MenuItem Header="Themes" Name="themes"    ></MenuItem>
+            <!--<MenuItem Header="Connection" Name="connectionMenu">
+                <MenuItem Header="Connect To Server" Command="{Binding Path=Document.Connect}"></MenuItem>
+                </MenuItem>-->
             </Menu>
         <DockPanel Grid.Row="1">
-            <views:TreeHolder>
-                <DockPanel LastChildFill="True" >
-                        <TreeView   ItemsSource="{Binding Path=DbController.Nodes}" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto"  Visibility="{Binding Path=DbController.IsVisible,  Converter={StaticResource BoolToVis}}"></TreeView>
-                        <TreeView ItemsSource="{Binding Path=DbController.TableController.Nodes}" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" Visibility="{Binding Path=DbController.TableController.IsVisible,  Converter={StaticResource BoolToVis}}" ></TreeView>
-                        <views:GridControl Visibility="{Binding Path=DbController.TableController.GridController.IsVisible,  Converter={StaticResource BoolToVis}}" HorizontalContentAlignment="Stretch"></views:GridControl>
-                    <views:ConnectionControl Grid.Row="1" Visibility="{Binding Path=ConnectionController.IsVisible,  Converter={StaticResource BoolToVis}}"></views:ConnectionControl>
-
-                </DockPanel>
-            </views:TreeHolder>
+            <avalonDock:DockingManager Name="docker">
+                <avalonDock:LayoutRoot>
+                    <avalonDock:LayoutPanel>
+                        <avalonDock:LayoutDocumentPane x:Name="docPane">
+                            <!--<avalonDock:LayoutDocument>
+                                <views:DataBrowser></views:DataBrowser>
+                            </avalonDock:LayoutDocument>-->
+                        </avalonDock:LayoutDocumentPane>
+                    </avalonDock:LayoutPanel>
+                </avalonDock:LayoutRoot>
+            </avalonDock:DockingManager>
 
         </DockPanel>
         <StatusBar Grid.Row="2" >

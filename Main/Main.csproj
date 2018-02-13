@@ -36,6 +36,9 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DotNetProjects.Wpf.AvalonDock, Version=3.2.48.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\DotNetProjects.AvalonDock.3.2.48\lib\net40\DotNetProjects.Wpf.AvalonDock.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -61,6 +64,7 @@
     <Compile Include="Cotrollers\BaseNodeController.cs" />
     <Compile Include="Cotrollers\ConnectionController.cs" />
     <Compile Include="Cotrollers\DatabaseController.cs" />
+    <Compile Include="Cotrollers\DataBrowserController.cs" />
     <Compile Include="Cotrollers\DbBase.cs" />
     <Compile Include="Cotrollers\GridController.cs" />
     <Compile Include="Cotrollers\RelayCommand.cs" />
@@ -70,8 +74,17 @@
     <Compile Include="Views\ConnectionControl.xaml.cs">
       <DependentUpon>ConnectionControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\DataBrowser.xaml.cs">
+      <DependentUpon>DataBrowser.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\GridControl.xaml.cs">
       <DependentUpon>GridControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\QueryBox.xaml.cs">
+      <DependentUpon>QueryBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\QueryBrowser.xaml.cs">
+      <DependentUpon>QueryBrowser.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\TreeHolder.xaml.cs">
       <DependentUpon>TreeHolder.xaml</DependentUpon>
@@ -93,7 +106,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\DataBrowser.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\GridControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\QueryBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\QueryBrowser.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

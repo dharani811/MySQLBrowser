@@ -9,10 +9,9 @@ using System.Windows.Input;
 
 namespace Main.Cotrollers
 {
-   public class DataBrowserController:UINotify,IConController, IDocument
+   public class DataBrowserController:DbBase,IConController, IDocument
     {
 
-        DbConnector dbConnector;
         DatabaseController dbController;
         ConnectionController connectionController;
         private ICommand connect;
@@ -45,13 +44,13 @@ namespace Main.Cotrollers
 
         void IConController.ConnectionChanged()
         {
-            dbConnector = new DbConnector(connectionController.ConnectionString);
-            dbController = new DatabaseController(dbConnector);
+            DbConnector = new DbConnector(connectionController.ConnectionString);
+            dbController = new DatabaseController(DbConnector);
             NotifyPropertyChanged("DbController");
             dbController.IsVisible = true;
             dbController.TableController.IsVisible = true;
             dbController.TableController.GridController.IsVisible = true;
-            DbController.PopulateNodes(dbConnector.GetDatabaseList(), false);
+            DbController.PopulateNodes(DbConnector.GetDatabaseList(), false);
 
         }
 

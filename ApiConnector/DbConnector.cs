@@ -13,8 +13,25 @@ namespace ApiConnector
     {
         private string connectionString;
         private string currentDb;
+        private string warnings;
+        private string message;
 
         public string CurrentDb { get => currentDb; set => currentDb = value; }
+        public string Warnings { get => warnings; set {
+                warnings = value;
+                if(WarningOccured!=null)
+                {
+                    WarningOccured(this, null);
+                }
+            } }
+        public string Message { get => message; set { message = value;
+                if(ErrorOccured!=null)
+                {
+                    ErrorOccured(this, null);
+                }
+            } }
+        public event EventHandler WarningOccured;
+        public event EventHandler ErrorOccured;
 
         public DbConnector()
         {
@@ -29,6 +46,7 @@ namespace ApiConnector
         private MySqlConnection CreateAndOpenCon()
         {
             var connection = new MySqlConnection(connectionString);
+            
             connection.Open();
             return connection;
         }
@@ -36,6 +54,7 @@ namespace ApiConnector
         public IEnumerable<string> GetDatabaseList()
         {
             var connection = CreateAndOpenCon();
+            connection.InfoMessage += Connection_InfoMessage;
             DataTable dt =new DataTable();
             MySqlDataAdapter dataAdapter = new MySqlDataAdapter("show databases", connection);
             dataAdapter.Fill(dt);
@@ -48,15 +67,33 @@ namespace ApiConnector
             
         }
 
+        private void Connection_InfoMessage(object sender, MySqlInfoMessageEventArgs args)
+        {
+            // throw new NotImplementedException();
+            warnings = "";
+            args.errors.ToList().ForEach(error=>warnings+="\nErrorCode == "+error.Code+" ; ErrorLevel =="+error.Level+"\n Error: \n"+error.Message);
+            Warnings = warnings;
+        }
+
         public DataTable ExecuteQuery(string query)
         {
-            var connection = CreateAndOpenCon();
-            SetDatabase(connection);
             DataTable dataTable = new DataTable();
-            MySqlDataAdapter adapter = new MySqlDataAdapter(query, connection);
-            adapter.Fill(dataTable);
-            adapter.Dispose();
-            connection.Close();
+
+            try
+            {
+                var connection = CreateAndOpenCon();
+                connection.InfoMessage += Connection_InfoMessage;
+                SetDatabase(connection);
+                MySqlDataAdapter adapter = new MySqlDataAdapter(query, connection);
+                adapter.Fill(dataTable);
+                adapter.Dispose();
+                connection.Close();
+
+            }
+            catch (Exception err)
+            {
+                Message = err.Message;
+            }         
 
             return dataTable;
         }
@@ -93,8 +130,8 @@ namespace ApiConnector
             }
             catch (Exception err)
             {
+                Message = err.Message;
 
-              
             }
             return connection.State==ConnectionState.Open?true:false ;
         }

@@ -5,12 +5,43 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Main.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             d:DesignHeight="300" d:DesignWidth="300" Name="queryControl">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition></RowDefinition>
-            <RowDefinition Height="25"></RowDefinition>
-        </Grid.RowDefinitions>    
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <RichTextBox Name="queryAreaBox" DockPanel.Dock="Left" >
+            <FlowDocument>
+                <Paragraph>
+                    <Run Text="{Binding Path=QueryString}" />
+                </Paragraph>
+            </FlowDocument>
+        </RichTextBox>
+        <RichTextBox Name="resultBox"  DockPanel.Dock="Left" Grid.Column="2" IsReadOnly="True">
+            <FlowDocument>
+                <Paragraph>
+                    <Run Text="{Binding Path=Message}" />
+                </Paragraph>
+            </FlowDocument>
+        </RichTextBox>
+
+
+        <!--<StackPanel Grid.Row="1" Grid.Column="1" Orientation="Vertical">-->
         
+        <TextBlock Grid.Column="1" Margin="10,0,10,282">Select Database</TextBlock>
+        <ComboBox Grid.Column="1"  DockPanel.Dock="Left" SelectedIndex="0" AllowDrop="True"  Name="dbListBox" ItemsSource="{Binding Path=DataBaseList}" SelectedItem="{Binding Path=CurrentDataBase}" Margin="10,32,10,243"></ComboBox>
+
+        <Button  Grid.Column="1"  IsEnabled="{Binding Path=IsCancelEnabled}" Command="{Binding Path=Cancel}" Margin="10,174,10,92">Cancel</Button>
+        <Button Grid.Column="1"   IsEnabled="{Binding Path=IsExecuteEnabled}" Command="{Binding Path=Execute}" Margin="10,92,10,174">Execute</Button>
+        <Button  Grid.Column="1"  IsEnabled="{Binding IsClearEnabled}" Command="{Binding Clear}" Content="Clear" Margin="10,255,10,10"/>
+       
+        <!--</StackPanel>-->
+
     </Grid>
 </UserControl>

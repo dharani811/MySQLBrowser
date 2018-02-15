@@ -5,8 +5,21 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Main.Views"
              mc:Ignorable="d" 
+                     xmlns:localMain="clr-namespace:Main"
+
              d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <localMain:BoolToVis x:Key="BoolToVis"/>
+    </UserControl.Resources>
     <Grid>
-        <TextBlock FontSize="45">This Feature is on the Way</TextBlock>
+        <Grid.RowDefinitions>
+            <RowDefinition ></RowDefinition>
+        </Grid.RowDefinitions>
+        <DockPanel Grid.Row="0"  LastChildFill="True" Name="dock">
+            <local:QueryBox x:Name="queryBox" DockPanel.Dock="Top" MinHeight="150" MaxHeight="500" Visibility="{Binding Path=IsQueryAreaVisible, Converter={StaticResource BoolToVis}}"></local:QueryBox>
+            <DataGrid  Visibility="{Binding Path=IsQueryAreaVisible, Converter={StaticResource BoolToVis}}" MinHeight="50"  Name="tableGrid" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto"  ItemsSource="{Binding Path=CurrentData}"></DataGrid>
+            <local:ConnectionControl Visibility="{Binding Path=ConnectionController.IsVisible, Converter={StaticResource BoolToVis}}">
+            </local:ConnectionControl>
+        </DockPanel>
     </Grid>
 </UserControl>

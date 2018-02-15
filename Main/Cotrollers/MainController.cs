@@ -42,5 +42,10 @@ namespace Main.Cotrollers
             IDocument doc = new DataBrowserController();
             return doc;
         }
+        public IDocument CreateNewQueryBrowser()
+        {
+            IDocument doc = new QueryAreaController();
+            return doc;
+        }
     }
 }

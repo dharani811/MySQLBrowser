@@ -31,7 +31,7 @@
         <TextBox IsReadOnly="True" Grid.Column="0" Grid.Row="2" FontSize="20" TextAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">Password</TextBox>
         <TextBox IsReadOnly="True" Grid.Column="0" Grid.Row="3"  FontSize="20" TextAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">Port</TextBox>
         <DockPanel Grid.Row="4" >
-        <Button Grid.Column="0" Name="cancelBtn" FontSize="20" Command="{Binding ConnectionController.CancelCommand}" Width="Auto">
+        <Button Grid.Column="0" Name="cancelBtn" FontSize="20" Command="{Binding ConnectionController.CancelCommand}" Width="Auto" Visibility="Collapsed">
             <TextBlock>Cancel</TextBlock>
         </Button>
             <Button Grid.Column="0" Width="Auto" Name="testBtn" FontSize="20" Command="{Binding ConnectionController.TestCommand}">

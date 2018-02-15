@@ -49,11 +49,11 @@ namespace Main
 
         private void dataBrowser_Click(object sender, RoutedEventArgs e)
         {
-            var dataBrowser = new Views.DataBrowser();
-            LayoutDocument layoutDocument = new LayoutDocument() {Title="DataBrowser_"+docPane.Children.Count+1 };
-            layoutDocument.Content = dataBrowser;
+            var dbBrowser = new Views.DataBrowser();
+            LayoutDocument layoutDocument = new LayoutDocument() {Title="DataBrowser_"+(docPane.Children.Count+1).ToString() };
+            layoutDocument.Content = dbBrowser;
             var iDoc = MainController.This.CreateNewDataBrowser();
-            dataBrowser.DataContext = iDoc;
+            dbBrowser.DataContext = iDoc;
             MainController.This.Document = iDoc;
             docPane.Children.Add(layoutDocument);
         }
@@ -61,10 +61,12 @@ namespace Main
         private void queryBrowser_Click(object sender, RoutedEventArgs e)
         {
             var queryBrowser = new Views.QueryBrowser();
-            LayoutDocument layoutDocument = new LayoutDocument() { Title = "QueryBrowser" + docPane.Children.Count + 1 };
+            LayoutDocument layoutDocument = new LayoutDocument() { Title = "QueryBrowser_" + (docPane.Children.Count + 1).ToString() };
             layoutDocument.Content = queryBrowser;
+            var iDoc = MainController.This.CreateNewQueryBrowser();
+            queryBrowser.DataContext = iDoc;
+            MainController.This.Document = iDoc;
             docPane.Children.Add(layoutDocument);
-
         }
     }
 

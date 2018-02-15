@@ -14,13 +14,12 @@ namespace Main.Cotrollers
     {
         private bool isVisible;
         private UnitOfWork workUnit;
-        
         public UINotify()
         {
             IsVisible = false;
         }
 
-        public void WorkUnit_StatusChanged(object sender, EventArgs e)
+        public virtual void WorkUnit_StatusChanged(object sender, EventArgs e)
         {
             if(workUnit!=null)
             MainController.This.CurrentStatus = workUnit.StatusOfWork.ToString();
@@ -32,12 +31,13 @@ namespace Main.Cotrollers
         public UnitOfWork WorkUnit { get => workUnit; set => workUnit = value; }
         public Dispatcher CurrentDisptacher => Application.Current.Dispatcher;
 
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         public void NotifyPropertyChanged(string  propertyName)
         {
             if (PropertyChanged != null)
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+                CurrentDisptacher.Invoke(()=>PropertyChanged(this, new PropertyChangedEventArgs(propertyName)));
 
         }
     }

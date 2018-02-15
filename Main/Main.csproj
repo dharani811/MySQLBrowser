@@ -67,6 +67,7 @@
     <Compile Include="Cotrollers\DataBrowserController.cs" />
     <Compile Include="Cotrollers\DbBase.cs" />
     <Compile Include="Cotrollers\GridController.cs" />
+    <Compile Include="Cotrollers\QueryAreaController.cs" />
     <Compile Include="Cotrollers\RelayCommand.cs" />
     <Compile Include="Cotrollers\TableController.cs" />
     <Compile Include="Cotrollers\UINotify.cs" />

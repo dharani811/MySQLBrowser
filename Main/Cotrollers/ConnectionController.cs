@@ -10,7 +10,7 @@ using System.Windows.Input;
 
 namespace Main.Cotrollers
 {
-    public class ConnectionController:UINotify
+    public class ConnectionController:DbBase
     {
         private string serverName;
         private string userName;
@@ -54,8 +54,8 @@ namespace Main.Cotrollers
 
         private void OnTestCon()
         {
-            var dbController = new DbConnector(ConnectionString);
-            if(dbController.CheckConnection())
+             DbConnector = new DbConnector(ConnectionString);
+            if(DbConnector.CheckConnection())
             {
                 ConResultOne = "Connection";
                 ConResultTwo = "Succeeded";
@@ -77,8 +77,8 @@ namespace Main.Cotrollers
 
         private void OnApply()
         {
-            var dbController = new DbConnector(ConnectionString);
-            if (!dbController.CheckConnection())
+            DbConnector = new DbConnector(ConnectionString);
+            if (!DbConnector.CheckConnection())
             {
                 ConResultOne = "Connection";
                 ConResultTwo = "Failed";
